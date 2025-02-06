@@ -1,0 +1,26 @@
+General idea of binary search:
+
+Split the array into halves multiple times, operating on 1 of those halves each time
+(depending on which half the desired element should be in) until either the element
+is out of bounds of the sub-array, or the element is equal to the middle value of the
+current sub-array
+
+As pseudocode:
+
+binarySearch(array, value) {
+    Find middle value (Find the average of two middle values if even; middle value if odd)
+
+    baseCase: Low index of array is greater than the high index (element is not present)
+
+    recursiveCase:
+        Determine which half of the array the desired value should be in
+        Run binarySearch on that array
+}
+
+Ex: Find 7 in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+
+1: mid = 6.5, 7 > 6.5, binarySearch([8, 13, 21, 34, 55], 7)
+
+2: mid = 21, 7 < 21, binarySearch([8, 13])
+
+3: mid = 10.5, 7 < 10.5, binarySearch([8])
