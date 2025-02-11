@@ -7,8 +7,17 @@ function search(list, element, low, high) {
   let mid = Math.floor((low + high) / 2);
 
   if (list[mid] === element) {
-    // Element in array --> return position
-    return mid;
+    // Element in array
+    // Check for multiple occurrences
+    let new_high = mid - 1;
+
+    let altIndex = search(list, element, low, new_high);
+
+    if (altIndex === -1) {
+      return mid;
+    } else {
+      return altIndex;
+    }
   }
 
   if (list[mid] > element) {
