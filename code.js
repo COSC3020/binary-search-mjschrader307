@@ -1,19 +1,26 @@
 function search(list, element, low, high) {
-  // Element not in array case
-  if (low > high) return -1;
+  if (low > high) {
+    // Element not in array
+    return -1;
+  }
 
   let mid = Math.floor((low + high) / 2);
 
-  if (list[mid] === element) return mid;
-
-  // Recursive case
+  if (list[mid] === element) {
+    // Element in array --> return position
+    return mid;
+  }
 
   if (list[mid] > element) {
     // Element in left half
-    return search(list, element, low, mid - 1);
-  } else if (list[mid] < element) {
+    let new_high = mid - 1;
+
+    return search(list, element, low, new_high);
+  } else {
     // Element in right half
-    return search(list, element, mid + 1, high);
+    let new_low = mid + 1;
+
+    return search(list, element, new_low, high);
   }
 }
 
